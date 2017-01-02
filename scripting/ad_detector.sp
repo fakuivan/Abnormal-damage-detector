@@ -12,7 +12,7 @@ enum AD_Type
 	AD_Type_Unassigned,			/**< Victim damaged from team "unassigned" */
 };
 
-#define DEBUG
+//#define DEBUG
 
 #define PLUGIN_VERSION "1.0"
 #define UNHOOK_CLIENT(%1)	SDKUnhook(%1, SDKHook_OnTakeDamageAlive, OnTakeDamageAlive)
