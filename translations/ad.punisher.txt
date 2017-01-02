@@ -1,0 +1,21 @@
+"Phrases"
+{
+	"ad_punisher_error_convar_ff_not_found"
+	{
+		"#format"	"{1:s}"
+		"en"		"Failed to find the CVAR '%s'"
+	}
+	"ad_punisher_kick_spec_reason"
+	{
+		"en"		"Damage from team 'Spectator' is not allowed in this server"    //255 char array
+	}
+	"ad_punisher_kick_ff_reason"
+	{
+		"en"		"Friendly Fire is not allowed in this server"    //255 char array
+	}
+	"ad_punisher_kick__log"
+	{
+		"#format"	"{1:L},{2:L},{3:s}"
+		"en"		"\"{1}\" kicked \"{2}\" (reason \"{3}\")"
+	}
+}

@@ -1,0 +1,21 @@
+"Phrases"
+{
+	"ad_punisher_error_convar_ff_not_found"
+	{
+		"#format"	"{1:s}"
+		"es"		"El CVAR '%s' no existe, no se aplicarán castigos al fuego amigo."
+	}
+	"ad_punisher_kick_spec_reason"
+	{
+		"es"		"No se acepta daño desde el equipo 'Espectador'"    //255 char array
+	}
+	"ad_punisher_kick_ff_reason"
+	{
+		"es"		"No se permite el fuego amigo"    //255 char array
+	}
+	"ad_punisher_kick__log"
+	{
+		"#format"	"{1:L},{2:L},{3:s}"
+		"es"		"\"{1}\" quitó a \"{2}\" del servidor (razón \"{3}\")"
+	}
+}
