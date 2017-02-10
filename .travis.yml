@@ -20,25 +20,28 @@ matrix:
 install:
     - wget --input-file=http://sourcemod.net/smdrop/$SMVERSION/sourcemod-latest-linux
     - tar -xzf $(cat sourcemod-latest-linux)
+    - COMMIT_NUMBER=$(git rev-list --count HEAD)
 before_script:
     - cp -r ./scripting ./addons/sourcemod
     - chmod +x ./addons/sourcemod/scripting/spcomp
     - mkdir ./plugins
     - mkdir ./plugins/disabled
+    - FILE=abnormal_damage-n$COMMIT_NUMBER.zip
 # And compile!
 script: 
     - ./addons/sourcemod/scripting/spcomp ./addons/sourcemod/scripting/ad_detector.sp -o./plugins/ad_detector.smx
     - ./addons/sourcemod/scripting/spcomp ./addons/sourcemod/scripting/ad_modules/ad_punisher.sp -o./plugins/disabled/ad_punisher.smx
 
-before_deploy: zip -r abnormal_damage.zip ./translations/ ./plugins/ ./scripting/
+before_deploy: zip -r $FILE ./translations/ ./plugins/ ./scripting/
 
 deploy:
     provider: releases
     api_key:
         secure: HkOJZiZ/zmQIMu3XaLWE8WUEXQbJIDJ8OfbIsO3fiFX3haUbh0Pha7ipsnoPGOCXsdYnN63D7BZ4IoU4vf38RbUNwmBLUaAMh/JhhDgVnxiyXQNCs4ezJzSRU7CzoxaZNqcQupzc4qFYfQF+xS8ZKfCMig6s2p+nRlQ3lNhpqAR8PNieYpPHmKaJPI5jUGaEqTC/hYn3u0BBMRbHFVH4cASN1RqyFEfcQTVZ4LBQ40aJ+oyiKwgX1cHuCOpGhpw3D6HYzu7PIXsOj4rRNgJqiNX6fZPomVgbE1cgLGQik7CqTVHiGcOvGvZD9srXXC7q2bTLPMFLXXw0g29cEZ3bYP3G+HjudqaNhTOcvBmz+Jn1PNpmnkPe3XLOL1lOXHPRJBY8gGOFoBQuq1+WmbMqfkakl7aTrbSoo7YzVsW6/hoMjuPUyRShTSTUBU5MAv5CIhoGT29LrQpFs3MK3JBHPy8YvsE4KLq5z/D+tCWZBfGWhWL7V2J7XkM1ljDHgjYaOnFYeCvSV5VB9M16XVbeWrGsgknefu3oic8/C3YHECfWDESJpcwAtx2/2rYzwBa39xzoxFp/hCT9xYU46mVWKxVDAJ22HmzG1xCvz9Dlh3WWDS6qWiQz1NB/a8wEtPda1fjq1JmeglSJbkbXz5byS3EZbARwLI7JU9Jeog4p6P8=
-    file: "abnormal_damage.zip"
+    file: $FILE
     skip_cleanup: true
     on:
+        condition: $SMVERSION = 1.8
         repo: fakuivan/Abnormal-damage-detector
         tags: true
 
